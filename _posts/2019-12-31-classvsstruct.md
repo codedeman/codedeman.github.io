@@ -80,9 +80,10 @@ print(copyDevStruct.firstName)
 
 ```
 👨‍⚖️ lưu ý ở đây **struct** không cần sử dụng hàm dựng **init()**
+
 👉🏼 lúc này kết quả chúng ta sẽ là 
 Casey
-Tim🤯
+Tim
 
 
 ### Khi nào nên dùng **class**  và khi nào nên dùng **struct**
