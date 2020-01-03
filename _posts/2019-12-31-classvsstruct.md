@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  struct với class trong IOS 
+title:  Sự khác biệt giữa struct với class trong IOS 
 categories:  interview
 ---
 
