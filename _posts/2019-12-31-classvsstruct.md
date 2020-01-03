@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title:  struct với class trong IOS 
