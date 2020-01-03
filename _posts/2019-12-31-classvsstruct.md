@@ -10,9 +10,10 @@ categories:  interview
 Xin chào các bạn sau vài lần đi phỏng vấn dạo, một trong những câu hỏi căn bản mình được hỏi nhiều nhất đó chính là **struct**  **class**  trong swift khác nhau ở điểm nào,  một câu hỏi tưởng chừng dễ. Nhưng bình thường chúng ta dùng thì cũng chả để ý đến nó  mà dùng nó lung tung 
 
 Đầu tiền trong Swift  **struct** và **class** khác nhau **struct** là kiểu dữ liệu còn **class** là kiểu tham chiếu 
+
 ![](https://miro.medium.com/max/1226/1*37Itex_pCsEW62HKKZB6CQ.jpeg)
 
-Kiểu tham chiếu là gì 
+Kiểu tham chiếu  và tham trị là gì 
 **class** Một ví dụ thực tế là khi bạn làm việc trên google doc bạn chia sẻ cho đồng nghiệp rồi đi ăn, sau khi quay trở lại thì bạn thấy một đống thứ tùm lum thay đổi. Đó là kiểu tham chiếu 
 mọi thay đổi  đồng nghiệp của bạn sẽ làm thay đổi tài liệu của bạn 
 
