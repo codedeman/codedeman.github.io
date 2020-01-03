@@ -5,6 +5,7 @@ categories:  interview
 ---
 
 ![](https://miro.medium.com/max/2608/1*FYVuUmJMom0ktCneMGxNmQ.png)
+
 ### IOS fresher thì hỏi gì 
 Xin chào các bạn sau vài lần đi phỏng vấn dạo, một trong những câu hỏi căn bản mình được hỏi nhiều nhất đó chính là **struct**  **class**  trong swift khác nhau ở điểm nào,  một câu hỏi tưởng chừng dễ. Nhưng bình thường chúng ta dùng thì cũng chả để ý đến nó  mà dùng nó lung tung 
 
