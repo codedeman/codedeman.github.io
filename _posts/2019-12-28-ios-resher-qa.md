@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Khi nào thì viewWillAppear, viewDidAppear, viewDidLoad, viewWillDisappear thực sự gọi trong IOS 
-categories: q&a
+categories: interview
 ---
 
 ![](https://topdev.vn/nha-tuyen-dung/wp-content/uploads/2019/03/fpt-software-image-4.jpg)
@@ -31,6 +31,7 @@ Bạn có thể nhìn thấy thự tự chạy sẽ là
 ### Tổng kết 
 
 1 viewDidLoad  sẽ được chạy đầu tiên nó được gọi chỉ khi controller load view  viewDidLoad chỉ làm 1 lần, bạn nên những thứ mà chỉ làm một lần trong ViewdidLoad , ví dụ như set Text hoặc Label
+
 2 viewWillApear sẽ được gọi trước khi view được thêm vào, nó luôn xảy ra sau viewDidLoad và được gọi bất cứ khi nào view được hiển thị 
 
 4viewWillDidDisappear được gọi trước khi bạn bấm chuyển màn hình 

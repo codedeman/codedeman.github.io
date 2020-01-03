@@ -13,7 +13,7 @@ Xin chào các bạn sau vài lần đi phỏng vấn dạo, một trong những
 
 ![](https://miro.medium.com/max/1226/1*37Itex_pCsEW62HKKZB6CQ.jpeg)
 
-Kiểu tham chiếu  và tham trị là gì 
+### Kiểu tham chiếu  và tham trị là gì 
 **class** Một ví dụ thực tế là khi bạn làm việc trên google doc bạn chia sẻ cho đồng nghiệp rồi đi ăn, sau khi quay trở lại thì bạn thấy một đống thứ tùm lum thay đổi. Đó là kiểu tham chiếu 
 mọi thay đổi  đồng nghiệp của bạn sẽ làm thay đổi tài liệu của bạn 
 
