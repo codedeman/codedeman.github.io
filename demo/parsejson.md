@@ -1,27 +1,39 @@
-Xin chào  các bạn  ios developer   bài viết này mình xin hướng dẫn mọi người cách parse json bằng  Codable nhé
-### Swift Codable là gì 
+Xin chào các bạn  ios developer bài viết này mình xin hướng dẫn mọi người cách parse json bằng  Codable nhé
+### Codable là gì 
 ![WWDC 2017](https://developer.apple.com/videos/play/wwdc2017/212) Apple giới thiệu tính năng mới trong Swift để parse json 
+Codable có thể chuyển đổi chính nó vào và ra dạng dữ liệu bên ngoài, Codable  kết hợp Encodable và  Decodable  trong một,  trình biên dịch sẽ cố gắng tự động tổng hợp code yêu cầu encode hoặc decode 
+
+``` swift
+
+typealias Codable = Decodable & Encodable
+
+```
 
 
-Codable  kết hợp Encodable và  Decodable  trong một 
+### Codable trong Swift 4 
+Trong swift 4, Apple đã giới thiệu 1 cách thức mới để mã hoá và giải mã hoá 
+Encodable - dùng cho mã hóa
+Decodable - dùng cho giải mã
+Codable - dùng cho cả mã hóa và giải mã
+Chúng hỗ trợ cả class struct và enum 
 
-trình biên dịch sẽ cố gắng tự động tổng hợp code yêu cầu encode hoặc decode
+### Encodable Protocol
 
-Như chúng ta đã biết Codable đã được thêm vào ở Swift4.
-Thực tế thì việc Encode, Decode không phải chỉ JSON mới có thể làm được. ở Foundation cũng đã có PropertyListEndcoder , PropertyListDecoder.
-Ngoài ra, việc sử dụng một Protocol Decoder Encoder độc lập , với lợi ích mà Codable mang lại , chúng ta có thể tuỳ ý xử lý biến đổi dữ liệu một cách an toàn.
+Một  kiểu  có thể mã hóa bản thân nó  thành một dạng dữ liệu để có thể sử dụng bên ngoài (JSON, plist,...). Nó được sử dụng bởi các types có thể được mã hóa.
+Nó chứa một phương thức duy nhất:
+encode(to:) - Mã hóa giá trị này vào bộ mã hóa đã cho.
 
-Vì vậy mà hôm nay để hiểu hơn về cơ chế hoạt động của Decoder, chúng ta hãy cùng thực hiện thử decode file CSV (có dấu phẩy phân biệt giữa các data) nhé.
-Cách làm của tôi đó là vừa tham khảo phần code JSONEncoder/Decoder PlistEncoder/Decoder đã có vừa viết dần dần code xử lý file CSV.
 
-Để đơn giản hoá file code, những tính năng mở rộng hay những phần xử lý nằm ngoài ví dụ đều được giản lược đi. Vì vậy chúng ta có thể nhìn kết cấu phần Decoder một cách dễ dàng và đơn giản hơn.
+### Decodable Protocol
+Một loại có thể giải mã hoá bản thân nó thành dữ liệu bên ngoài thành đối tượng được sử dụng trong ứng dụng. Nó được sử dụng bởi loại có thể được giải mã 
+Nó cũng chứ một phương thức duy nhất :
+init(from:) — Khởi tạo một đối tượng bằng cách giải mã dữ liệu từ bộ giải mã đã cho 
 
-At WWDC 2017, Apple has introduced the new feature in Swift to parse JSON without any pain using Swift Codable protocol. There is talk available to watch on Whats New in Foundation, you can watch about this new featured from 23 min onwards. Basically, this protocol has the combination of Encodable and Decodable protocol that can be used to work with JSON data in both directions. In summary, Swift Codable protocol has offered following things to us.
-* Sử dụng  Codable
-Using Codable, we can model JSONObject or PropertyList file into equivalent Struct or Classes by writing very few lines of code. We don’t have to write the constructor for the properties in the objects. It’s all handed by Codable. We just need to extend our model to conform to the Codable, Decodable or Encodable protocol.
 
-Đầu tiên mọi người có thể xem link [json](("https://api.github.com/search/users?q=dung")) ở đây  **dung** là 1 cái parameter mà mình để  thôi các bạn có thể để bất cứ tên gì mà các bạn muốn 
 
+
+
+Đầu tiên mọi người có thể xem link [json](("https://api.github.com/search/users?q=dung")) ở đây  **dung** là 1 cái parameter mà mình để  thôi các bạn có thể để bất cứ tên gì mà các bạn muốn  miễn là có data 
 
 ### Ví dụ 
 Mình có một đoạn json như sau 
@@ -57,17 +69,16 @@ Mình có một đoạn json như sau
 
 
 ```
-Điều đầu tiên bạn cần phải biết 
 
-### Bắt đầu parse json nào 
+### Bước 1 import thư viện 
 Đầu tiên chúng ta cần import thư viện thông qua ![cocopods](https://cocoapods.org)
 
 ``` 
 pod 'Alamofire', '~> 5.0.0-rc.3'
 
 ```
-
-Chúng ta sẽ tạo 1 file model có tên là  ***User***   
+### Bước 2 Tạo Model
+Chúng ta sẽ tạo 1 file model có tên là  ***User***   kế thừa từ **Codable**
 
 ``` swift
 
@@ -88,14 +99,19 @@ struct User:Codable{
  
 
 ```
-Lưu ý các properties trong Model phải trùng khớp với các key value trong JSON data.
+👉🏼Lưu ý các properties trong Model phải trùng khớp với các key value trong JSON data  thì mới parse được json nhé, trong trường hợp mà tên biến trong **Model** mà không trùng với key value trong Json data chúng ta có thể dùng 
+
+``` 
+enum CodingKeys: String, CodingKey {
+    case totalcount = "total_count"
+}
+```
 
 
-
-👉🏼 Tiếp theo chúng ta tạp 1 file có tên là ***DataService** trong file này chúng ta sẽ viết 1 class , trong class có chứa 1 closure  
+### Bước 3 parse json 
+👉🏼 Tiếp theo chúng ta tạp 1 file có tên là ***DataService*** trong file này chúng ta sẽ viết 1 class , trong class có chứa 1 closure  
 
 ``` swift
-
 
 import Foundation
 import Alamofire
@@ -126,9 +142,18 @@ class Dataservice {
     
 }
 
+```
+
+Ở đây chúng ta sử dụng **JSONEncoder**  để chuyển từ  kiểu **Codable** sang **data**
+
+``` swift 
+
+    let person = try jsonDecoder.decode(UserRequest.self, from: data)
 
 ```
-Chúng ta sẽ tạo một file cell để hiển thị thông tin lên ***Tabel***  có tên là  **DasboardCell** 
+
+
+Tiếp theo chúng ta sẽ tạo một file cell để hiển thị thông tin lên ***Tabel***  có tên là  **DasboardCell**  trong file này chúng ta muốn hiển thị ảnh cũng như tên 
 ``` swift
 
 
@@ -165,8 +190,75 @@ import UIKit
 
 ```
 
-Trong file **ViewController**
+Trong file **ViewController**  chúng ta sẽ hiển thị dữ liệu lên 1 tableview 
 
+``` swift
+
+//
+//  ViewController.swift
+//  TestDesignPattern
+//
+//  Created by Apple on 10/22/19.
+//  Copyright © 2019 Apple. All rights reserved.
+//
+
+import UIKit
+
+
+class ViewController: UIViewController {
+    
+    @IBOutlet weak var userTableView: UITableView!
+    var userModel:[User] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        userTableView.register(UINib(nibName: "DasboardCell", bundle: nil), forCellReuseIdentifier: "DasboardCell")
+
+        userTableView.delegate = self
+        userTableView.dataSource = self
+        Dataservice.intance.fetchData(keyword: "b") { (users) in
+            self.userModel = users!.items
+            self.userTableView.reloadData()
+        }
+    
+    }
+}
+extension ViewController:UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return userModel.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DasboardCell") as? DasboardCell else   {
+    
+            return DasboardCell()
+        }
+        let user = userModel[indexPath.row]
+        cell.configureCell(user: user)
+        
+        
+        return cell
+        
+    }
+    
+    
+}
+    
+
+
+```
+
+Ở đây như mình đã nói ở trên bạn có thể truyền vào 1 parameter bất kỳ miễn là có data nhé 
+
+
+
+
+Ok h bấm run để  xem kết quả của chúng ta nào 
+
+![](https://imgur.com/8IFKwMN)
+
+Bài viết tham khảo nguồn ![](https://www.swiftbysundell.com/basics/codable/)
 
 
 Bài viết này có thể còn nhiều thiếu sót mong các cao nhân góp ý giúp em, để em có thể cải thiện bài viết sau hơn, mọi thông tin góp ý xin gửi về ![phamtrungkiendev@gmail.com]()
