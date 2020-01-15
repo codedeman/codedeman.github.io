@@ -269,7 +269,7 @@ Dataservice.intance.fetchData(keyword: "b") { (users) in
 
 Ok h bấm run để  xem kết quả của chúng ta nào 
 
-[Imgur](https://i.imgur.com/8IFKwMN.png)
+![](https://i.imgur.com/8IFKwMN.png)
 
 
 Bài viết tham khảo nguồn ![](https://www.swiftbysundell.com/basics/codable/)
