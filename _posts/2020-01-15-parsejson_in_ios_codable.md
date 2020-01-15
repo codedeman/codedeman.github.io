@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Parse json siêu dễ  Swift sử dụng Codable
+title:  Parse json siêu dễ trong Swift sử dụng Codable
 categories: interview
 ---
 
