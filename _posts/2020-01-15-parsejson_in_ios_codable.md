@@ -30,7 +30,7 @@ Nó cũng chứ một phương thức duy nhất :
 init(from:) — Khởi tạo một đối tượng bằng cách giải mã dữ liệu từ bộ giải mã đã cho 
 
 ## Bắt đầu code nhé 
-Đầu tiên mọi người có thể xem link [json](("https://api.github.com/search/users?q=dung")) ở đây  **dung** là 1 cái parameter mà mình để  thôi các bạn có thể để bất cứ tên gì mà các bạn muốn  miễn là có data 
+Đầu tiên mọi người có thể xem link [json]("https://api.github.com/search/users?q=dung") ở đây  **dung** là 1 cái parameter mà mình để  thôi các bạn có thể để bất cứ tên gì mà các bạn muốn  miễn là có data 
 
 ### Ví dụ 
 Mình có một đoạn json như sau 
@@ -275,7 +275,7 @@ Ok bây giờ chúng ta  bấm run để  xem kết quả của chúng ta nào
 
 ##  Tổng Kết 
 
-Mình vừa hướng dẫn các bạn cách bạn json sử dụng **codable**  bài viết này có thể còn nhiều thiếu sót mong các cao nhân góp ý giúp em, để em có thể cải thiện bài viết sau hơn, mọi thông tin góp ý xin gửi về [phamtrungkiendev@gmail.com]
+Mình vừa hướng dẫn các bạn cách bạn json sử dụng **codable**  bài viết này có thể còn nhiều thiếu sót mong các cao nhân góp ý giúp em, để em có thể cải thiện bài viết sau hơn, mọi thông tin góp ý xin gửi về [phamtrungkiendev@gmail.com](phamtrungkiendev@gmail.com)
 
 Bài viết tham khảo nguồn 
 
