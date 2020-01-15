@@ -156,8 +156,7 @@ behavior subject  cũng giống với publishsubject chỉ khác  behavior subje
 ![](https://i.stack.imgur.com/JAyKU.png)
  Concat tương tư như  hoạt động của  merge()   sự khác nhau nằm ở chỗ  concat sẽ đợi các luồng trước kết thúc trước rồi đến các luồng sau, còn merger()  thì bạn có thể thay thế output 
 
- ### Lưu ý 
- Bạn chỉ có thể nối các chuỗi có cùng kiểu dữ liệu với nhau, nếu nối khác kiểu  sẽ báo lỗi 
+ 👉🏼Lưu ý  bạn chỉ có thể nối các chuỗi có cùng kiểu dữ liệu với nhau, nếu nối khác kiểu  sẽ báo lỗi 
 
  Example 
  ```swift
@@ -206,7 +205,7 @@ right.onNext(6)
  1,2,3,4,5,6,7
  
  
- ### 4 RxSwift Transforming
+ ###  4 RxSwift Transforming
   
 ## map
   Rxswift map hoạt động tương tự thư viện chuẩn của swift điểm khác biệt là nó hoạt động trong một observables 
@@ -318,7 +317,7 @@ right.onNext(6)
   
   ```
   
-  ### Skipping operators
+  ###  Skipping operators
   Cho phép bỏ qua phần tử khi  truyền vào 1 prametter 
   
   code example
