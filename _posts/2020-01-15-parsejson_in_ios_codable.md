@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Parse json trong Swift sử dụng Codable
+title:  Parse json siêu dễ  Swift sử dụng Codable
 categories: interview
 ---
 
@@ -19,15 +19,17 @@ Chúng hỗ trợ cả class struct và enum
 
 Một  kiểu  có thể mã hóa bản thân nó  thành một dạng dữ liệu để có thể sử dụng bên ngoài (JSON, plist,...). Nó được sử dụng bởi các types có thể được mã hóa.
 Nó chứa một phương thức duy nhất:
+
 encode(to:) - Mã hóa giá trị này vào bộ mã hóa đã cho.
 
 
 ### Decodable Protocol
 Một loại có thể giải mã hoá bản thân nó thành dữ liệu bên ngoài thành đối tượng được sử dụng trong ứng dụng. Nó được sử dụng bởi loại có thể được giải mã 
 Nó cũng chứ một phương thức duy nhất :
+
 init(from:) — Khởi tạo một đối tượng bằng cách giải mã dữ liệu từ bộ giải mã đã cho 
 
-
+## Bắt đầu code nhé 
 Đầu tiên mọi người có thể xem link [json](("https://api.github.com/search/users?q=dung")) ở đây  **dung** là 1 cái parameter mà mình để  thôi các bạn có thể để bất cứ tên gì mà các bạn muốn  miễn là có data 
 
 ### Ví dụ 
@@ -66,7 +68,7 @@ Mình có một đoạn json như sau
 ```
 
 ### Bước 1 import thư viện 
-Đầu tiên chúng ta cần import thư viện thông qua ![cocopods](https://cocoapods.org)
+Đầu tiên chúng ta cần import thư viện thông qua [cocopods](https://cocoapods.org)
 
 ``` 
 pod 'Alamofire', '~> 5.0.0-rc.3'
@@ -104,7 +106,7 @@ enum CodingKeys: String, CodingKey {
 
 
 ### Bước 3 parse json 
-👉🏼 Tiếp theo chúng ta tạp 1 file có tên là ***DataService*** trong file này chúng ta sẽ viết 1 class , trong class có chứa 1 closure  
+👉🏼 Tiếp theo chúng ta tạp 1 file có tên là ***DataService*** trong file này chúng ta sẽ viết 1 class, trong class có chứa 1 closure  
 
 ``` swift
 
@@ -271,11 +273,12 @@ Ok bây giờ chúng ta  bấm run để  xem kết quả của chúng ta nào
 
 ![](https://i.imgur.com/8IFKwMN.png)
 
-###  Tổng Kết 
+##  Tổng Kết 
 
 Mình vừa hướng dẫn các bạn cách bạn json sử dụng **codable**  bài viết này có thể còn nhiều thiếu sót mong các cao nhân góp ý giúp em, để em có thể cải thiện bài viết sau hơn, mọi thông tin góp ý xin gửi về [phamtrungkiendev@gmail.com]
 
 Bài viết tham khảo nguồn 
+
 [Sundell](https://www.swiftbysundell.com/basics/codable/)
 
 [Apple](https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types)
