@@ -1,14 +1,12 @@
-Xin chào các bạn  ios developer bài viết này mình xin hướng dẫn mọi người cách parse json bằng  Codable nhé
+Xin chào các nếu là một developer không sớm thì muộn bạn sẽ gặp phải parse json, bài viết này mình xin hướng dẫn mọi người cách parse json bằng  Codable nhé
 ### Codable là gì 
 ![WWDC 2017](https://developer.apple.com/videos/play/wwdc2017/212) Apple giới thiệu tính năng mới trong Swift để parse json 
 Codable có thể chuyển đổi chính nó vào và ra dạng dữ liệu bên ngoài, Codable  kết hợp Encodable và  Decodable  trong một,  trình biên dịch sẽ cố gắng tự động tổng hợp code yêu cầu encode hoặc decode 
 
 ``` swift
-
 typealias Codable = Decodable & Encodable
 
 ```
-
 
 ### Codable trong Swift 4 
 Trong swift 4, Apple đã giới thiệu 1 cách thức mới để mã hoá và giải mã hoá 
@@ -28,9 +26,6 @@ encode(to:) - Mã hóa giá trị này vào bộ mã hóa đã cho.
 Một loại có thể giải mã hoá bản thân nó thành dữ liệu bên ngoài thành đối tượng được sử dụng trong ứng dụng. Nó được sử dụng bởi loại có thể được giải mã 
 Nó cũng chứ một phương thức duy nhất :
 init(from:) — Khởi tạo một đối tượng bằng cách giải mã dữ liệu từ bộ giải mã đã cho 
-
-
-
 
 
 Đầu tiên mọi người có thể xem link [json](("https://api.github.com/search/users?q=dung")) ở đây  **dung** là 1 cái parameter mà mình để  thôi các bạn có thể để bất cứ tên gì mà các bạn muốn  miễn là có data 
@@ -144,7 +139,18 @@ class Dataservice {
 
 ```
 
-Ở đây chúng ta sử dụng **JSONEncoder**  để chuyển từ  kiểu **Codable** sang **data**
+### Đoạn code trên làm gì 
+
+👉🏼 Ở đây chúng ta dùng thư viện Alamofire  như mình đã nói ở trên, vì ở đây là phương thức **get** nên chỉ cần dùng **AF.request(url)** là đủ 
+
+``` swift
+
+AF.request("https://api.github.com/search/users?q=\(keyword)").responseJSON { (response) in
+
+
+```
+
+👉🏼 Ở đây chúng ta sử dụng **JSONEncoder**  để chuyển từ  kiểu **Codable** sang **data**
 
 ``` swift 
 
@@ -248,17 +254,24 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
 
 
 ```
+### Đoạn code trên làm gì 
 
 Ở đây như mình đã nói ở trên bạn có thể truyền vào 1 parameter bất kỳ miễn là có data nhé 
 
+``` swift
 
+Dataservice.intance.fetchData(keyword: "b") { (users) in
+           
+}
+
+```
 
 
 Ok h bấm run để  xem kết quả của chúng ta nào 
 
-![](https://imgur.com/8IFKwMN)
+![](https://imgur.com/a/mTZl1ph)
+
+
 
 Bài viết tham khảo nguồn ![](https://www.swiftbysundell.com/basics/codable/)
-
-
-Bài viết này có thể còn nhiều thiếu sót mong các cao nhân góp ý giúp em, để em có thể cải thiện bài viết sau hơn, mọi thông tin góp ý xin gửi về ![phamtrungkiendev@gmail.com]()
+Mình vừa hướng dẫn các bạn cách bạn json sử dụng **codable**  bài viết này có thể còn nhiều thiếu sót mong các cao nhân góp ý giúp em, để em có thể cải thiện bài viết sau hơn, mọi thông tin góp ý xin gửi về ![phamtrungkiendev@gmail.com]()
