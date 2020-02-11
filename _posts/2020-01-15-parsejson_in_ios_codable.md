@@ -5,8 +5,6 @@ categories: interview
 ---
 
 Xin chào các nếu là một developer không sớm thì muộn bạn sẽ gặp phải parse json, bài viết này mình xin hướng dẫn mọi người cách parse json bằng  Codable nhé
-![](https://insights.dice.com/wp-content/uploads/2017/06/Screen-Shot-2017-06-08-at-6.11.45-PM.png)
-
 
 ### Codable trong Swift 4 
 Trong swift 4, Apple đã giới thiệu 1 cách thức mới để mã hoá và giải mã hoá 
