@@ -3,7 +3,6 @@ layout: post
 title: Học Rxswift  cấp tốc  trong 10 phút 👨🏻‍💻
 
 ---
-![](https://miro.medium.com/max/768/1*LhBN22God_W5bKnwOBy-8w.jpeg)
 Sau 2 tháng tìm hiều về Rxswift hôm nay mình xin mạn phép, chia sẻ những gì mà mình học được trong 2 tháng vừa qua .Để không làm mất thời gian bài viết này  mình sẽ chỉ nói sơ qua về khái niệm, mà không đi sâu vào cụ thể  của từng thành phần, và mình cũng  sẽ code để demo các cách thức hoạt động của các thành phần để xem nó ra sao . Dân IT nên thích làm hơn là học lý thuyết suông, có người từng bảo với mình rằng "Nên làm để học thay vì học để làm " điều đó sẽ thấy thú vị hơn là học một đống lý thuyết, mà không áp dụng được vào thực tế,  sau bao năm ngẫm lại vẫn thấy anh ấy nói đúng. Mong rằng bài viết sẽ hữu ích cho các bạn mới tiếp cận với RxSwift.
 
    
