@@ -4,7 +4,6 @@ title:  Khi nào thì viewWillAppear, viewDidAppear, viewDidLoad, viewWillDisapp
 categories: interview
 ---
 
-![](https://topdev.vn/nha-tuyen-dung/wp-content/uploads/2019/03/fpt-software-image-4.jpg)
 ### IOS fresher thì hỏi gì 
 Một vài tháng trước mình đã quyết định apply vào một công ty công nghệ có tên là 👨🏻‍💻 không tiện nói tên. Sau một tuần thì mình nhận được kết quả công ty ofer cho mình với mức lương là hơn ******* triệu, nó không quá cao , cũng không hẳn là quá thấp đối với mình một sinh viên mới ra trường  Bên cạnh đó mình  cũng phải  làm 1 bài test liên quan đến IOS dù sao thì mình cũng đã pass qua được vòng phỏng vấn,  nên mình sẽ chia sẻ mình được hỏi những gì trong lúc phỏng vấn 
 
