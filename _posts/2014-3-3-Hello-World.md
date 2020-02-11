@@ -4,8 +4,7 @@ title: Review sách Zero to One
 categories: reviewbooks 
 ---
 
-![](https://1.bp.blogspot.com/-bPHa0R6epic/XTb1wkMmx8I/AAAAAAAAARQ/9ywz0vpe-qMkveG8qmMpjJIsZjcUk-qfgCLcBGAs/s1600/zero-to-one-book-by-blake-masters-free-download-pdf.jpg)
-🤠ZERO TO ONE  TỪ KHÔNG ĐẾN MỘT 🤠
+### ZERO TO ONE  TỪ KHÔNG ĐẾN MỘT 🤠
 Bài học về khởi nghiệp hay cách xây dựng tương lai 
 Hôm nay mình muốn chia sẻ một cuốn sách mình tâm đắc nhất, mà mình được một người bạn ở đại học Stanford  giới thiệu  .
 Cuốn sách này rất hữu ích cho các bạn đang có ý định khởi nghiệp đó chính là cuốn sách “Zero to One “ Từ không đến một của tác giả Peter Thiel và Blake Masters 
