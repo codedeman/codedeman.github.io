@@ -3,7 +3,6 @@ layout: page
 title: About
 permalink: /about/
 ---
-
 Xin chào 
 Mình tên là Kiên nhưng bạn có thể gọi mình là Kevin 
 Mình là một IOS developer 

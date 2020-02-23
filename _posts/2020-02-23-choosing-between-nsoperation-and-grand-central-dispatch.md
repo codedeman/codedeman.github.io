@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Chọn cái nào NSOpertion và GDC trong IOS 
-categories: ios developer  
+categories: ios developer 
+comment: 0
 ---
 Xin chào mọi nguời dạo gần đây mình nhận được góp ý của một expert trong nghề góp ý về bài viết của mình để bài viết của mình chất lượng hơn, cảm ơn anh Linh, sau lần góp ý đó mình mới nhận ra được mình đang thiếu sót nhiều chỗ, trong những bài viết tới mình sẽ cố gắng cải thiện để đem đến cho bạn đọc bài viết với nội dung đầy đủ cũng như  trong bài viết này chúng ta sẽ tìm hiểu về sự khác biệt của **NSOperation** và **GDC** tại sao đã có 1 thằng để dùng rồi lại sinh ra thêm thằng kia để làm gì bài viết hôm nay chúng ta cùng khám phá nhé 
 
@@ -62,3 +63,4 @@ Dependency management  là một thứ tuyệt vời khi sử dụng **NSOperati
 ## Kết luận 
 
 Trong bài viết này chúng ta vừa khám phá điểm lợi và bất lợi của **GDC** và **NSOperation**  Api  rõ ràng rằng có thể kết hợp cả 2 công nghệ là sự lựa chọn trong hầu hết các dự án 
+
