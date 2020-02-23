@@ -1,12 +1,13 @@
+---
+layout: post
+title:  Parse json trong Swift sử dụng Codable
+categories: interview
+
+---
+
 Xin chào các nếu là một developer không sớm thì muộn bạn sẽ gặp phải parse json, bài viết này mình xin hướng dẫn mọi người cách parse json bằng  Codable nhé
-### Codable là gì 
-![WWDC 2017](https://developer.apple.com/videos/play/wwdc2017/212) Apple giới thiệu tính năng mới trong Swift để parse json 
-Codable có thể chuyển đổi chính nó vào và ra dạng dữ liệu bên ngoài, Codable  kết hợp Encodable và  Decodable  trong một,  trình biên dịch sẽ cố gắng tự động tổng hợp code yêu cầu encode hoặc decode 
+![](https://insights.dice.com/wp-content/uploads/2017/06/Screen-Shot-2017-06-08-at-6.11.45-PM.png)
 
-``` swift
-typealias Codable = Decodable & Encodable
-
-```
 
 ### Codable trong Swift 4 
 Trong swift 4, Apple đã giới thiệu 1 cách thức mới để mã hoá và giải mã hoá 
@@ -28,7 +29,7 @@ Nó cũng chứ một phương thức duy nhất :
 init(from:) — Khởi tạo một đối tượng bằng cách giải mã dữ liệu từ bộ giải mã đã cho 
 
 
-Đầu tiên mọi người có thể xem link [json](("https://api.github.com/search/users?q=dung")) ở đây  **dung** là 1 cái parameter mà mình để  thôi các bạn có thể để bất cứ tên gì mà các bạn muốn  miễn là có data 
+Đầu tiên mọi người có thể xem link [json]("https://api.github.com/search/users?q=dung")  ở đây  **dung** là 1 cái parameter mà mình để  thôi các bạn có thể để bất cứ tên gì mà các bạn muốn  miễn là có data 
 
 ### Ví dụ 
 Mình có một đoạn json như sau 
@@ -141,7 +142,7 @@ class Dataservice {
 
 ### Đoạn code trên làm gì 
 
-👉🏼 Ở đây chúng ta dùng thư viện Alamofire  như mình đã nói ở trên, vì ở đây là phương thức **get** nên chỉ cần dùng **AF.request(url)** là đủ 
+👉🏼 Ở đây chúng ta dùng thư viện Alamofire  như mình đã nói ở trên, vì ở đây  chỉ là phương thức **get** nên chỉ cần dùng **AF.request(url)** là đủ 
 
 ``` swift
 
@@ -196,7 +197,7 @@ import UIKit
 
 ```
 
-Trong file **ViewController**  chúng ta sẽ hiển thị dữ liệu lên 1 tableview 
+Trong file **ViewController**  chúng ta sẽ hiển thị dữ liệu lên 1 **Tableview**
 
 ``` swift
 
@@ -267,10 +268,16 @@ Dataservice.intance.fetchData(keyword: "b") { (users) in
 ```
 
 
-Ok h bấm run để  xem kết quả của chúng ta nào 
+Ok bây giờ chúng ta  bấm run để  xem kết quả của chúng ta nào 
 
 ![](https://i.imgur.com/8IFKwMN.png)
 
+Mình vừa hướng dẫn các bạn cách bạn json sử dụng **codable**  bài viết này có thể còn nhiều thiếu sót mong các cao nhân góp ý giúp em, để em có thể cải thiện bài viết sau hơn, mọi thông tin góp ý xin gửi về [phamtrungkiendev@gmail.com](phamtrungkiendev@gmail.com)
 
-Bài viết tham khảo nguồn ![](https://www.swiftbysundell.com/basics/codable/)
-Mình vừa hướng dẫn các bạn cách bạn json sử dụng **codable**  bài viết này có thể còn nhiều thiếu sót mong các cao nhân góp ý giúp em, để em có thể cải thiện bài viết sau hơn, mọi thông tin góp ý xin gửi về ![phamtrungkiendev@gmail.com]()
+Bài viết tham khảo nguồn 
+[Sundell](https://www.swiftbysundell.com/basics/codable/)
+
+[Apple](https://developer.apple.com/documentation/foundation/archives_and_serialization/encoding_and_decoding_custom_types)
+
+
+
