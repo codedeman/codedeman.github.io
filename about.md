@@ -15,7 +15,7 @@ I'm a IOS developer at Ominext which is a prominent copany
 I have been solve a lot of problem with IOS app. Therefore I want to share what I researched about my project  so we can learn each other  and become better software  engineers  
 I hope this blog is helpful to you 
 
-For more details about my work experience, please check out my ![Linkedin](https://www.linkedin.com/in/kien-pham-514274141/)
+For more details about my work experience, please check out my [Linkedin](https://www.linkedin.com/in/kien-pham-514274141/)
 
 thank you 
 
