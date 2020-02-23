@@ -1,0 +1,19 @@
+<div id="disqus_thread">
+  <a class="comment-btn" href="#" onclick="disqus();return false;" role="button" rel="nofollow">Add/Load Comments</a>
+</div>
+<script type="text/javascript">
+    var disqus_shortname = "chiasewebapp";
+    var disqus_loaded = false;
+    function disqus() {
+       if (!disqus_loaded)  {
+           disqus_loaded = true;
+           var e = document.createElement("script");
+        e.type = "text/javascript";
+        e.async = true;
+        e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+        (document.getElementsByTagName("head")[0] ||
+         document.getElementsByTagName("body")[0])
+        .appendChild(e);
+      }
+    }  
+</script>
