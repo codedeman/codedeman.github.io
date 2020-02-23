@@ -7,7 +7,6 @@ Xin chào mọi nguời dạo gần đây mình nhận được góp ý của m�
 
 ## Sự khác biệt của NSOperation 
 
-NSOperation làm việc nằm  ở  trên GCD , nói cách khác  thì NSOperation năm ở mức cao hơn so với thằng GDC 
 **GDC** viết tắt của Grand Central Dispatch là một api nó ở  mức độ thấp nhất  được dựa vào nền tảng của **C** tương tác trực tiếp với Unix 
 **NSOperation** là một class của **ObjectiveC** nó ở mức độ cao hơn so  với  **GDC**
 ## Lợi ích của NSOperation 
