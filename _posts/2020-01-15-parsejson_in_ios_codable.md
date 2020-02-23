@@ -2,6 +2,8 @@
 layout: post
 title:  Parse json siêu dễ trong Swift sử dụng Codable
 categories: interview
+comments: true
+# other options
 ---
 
 Xin chào các nếu là một developer không sớm thì muộn bạn sẽ gặp phải parse json, bài viết này mình xin hướng dẫn mọi người cách parse json bằng  Codable nhé
