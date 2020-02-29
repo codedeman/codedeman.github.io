@@ -103,8 +103,8 @@ Trong đó, VeryHigh có độ ưu tiên cao nhất và thấp nhất là VeryLo
 
 ### Control 
 **NSOperation** cũng có được nhiều lợi ích khác, ví dụ như bạn có thể thêm số queue mà bạn muốn hoạt động song song 
-``` swift 
-maxConcurrentOperationCount = 1
+``` 
+  maxConcurrentOperationCount = 1
 ```
 Là số operation que  có thể hoạt động song song. Nếu  không để số que cụ thể mà sử dụng  mặc định, thì nó sẽ theo tài nguyên mà hệ thống cho phép, lúc đó có thể thực hiện nhiều task cùng một lúc 
  
@@ -118,7 +118,7 @@ GDC Thì thường dùng cho nhưng tác vụ đơn giản, điểm lợi thế 
 
 ## Kết luận 
 
-Trong bài viết này chúng ta vừa khám phá  sự khác biệt hai api là  **GDC** và **NSOperation**    rõ ràng rằng có thể kết hợp cả 2 công nghệ là sự lựa chọn trong hầu hết các dự án, và tuỳ theo mục đích sử dụng của bạn.  Bài viết này không thiếu sót mong mọi người góp ý giúp mình để lại bình luận phía giới bài việt hoặc mail trực tiếp cho mình [phamtrungkien@gmail.com]
+Trong bài viết này chúng ta vừa khám phá  sự khác biệt hai api là  **GDC** và **NSOperation**    rõ ràng rằng có thể kết hợp cả 2 công nghệ là sự lựa chọn trong hầu hết các dự án, và tuỳ theo mục đích sử dụng của bạn.  Bài viết này không thiếu sót mong mọi người góp ý giúp mình để lại bình luận phía giới bài việt hoặc mail trực tiếp cho mình phamtrungkiendev@gmail.com
 
 ## Tham khảo nguồn 
 [Apple](https://developer.apple.com/documentation/foundation/nsoperationqueue)
