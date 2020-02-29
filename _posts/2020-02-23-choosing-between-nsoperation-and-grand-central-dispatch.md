@@ -2,26 +2,29 @@
 ---
 layout: post
 title: Chọn cái nào NSOpertion và GDC trong IOS 
-categories: ios developer 
+categories: ios developer
+thumbnail:https://www.iosdevlog.com/assets/images/wwdc/2015/226/1.png
 ---
-Xin chào mọi nguời dạo gần đây mình nhận được góp ý của một anh leader, anh góp ý về bài viết của mình để bài viết của mình chất lượng hơn, cảm ơn anh rất nhiều,  sau lần góp ý đó mình mới nhận ra được mình đang thiếu sót nhiều chỗ, trong những bài viết tới mình sẽ cố gắng cải thiện để đem đến cho bạn đọc bài viết với nội dung đầy đủ và chất lượng nhất.
-Nhắc đến các ứng dụng bên IOS nhiều người sẽ nghĩ đến độ mượt mà của nó 
-Là 1 IOS dev chuyên nghiệp ngoài việc tránh code leak memory làm thế nào để tối ưu hoá bộ nhớ 
-Trong bài viết này chúng ta sẽ tìm hiểu về sự khác biệt của **NSOperation** và **GDC** tại sao đã có 1 thằng để dùng  rồi lại sinh ra thêm thằng kia để làm gì bài viết hôm nay chúng ta cùng khám phá nhé 
+> Xin chào mọi nguời dạo gần đây mình nhận được góp ý của một anh leader team mobile  góp ý về bài viết của mình chia sẻ, cảm ơn anh rất nhiều, sau lần góp ý đó mình mới nhận ra được mình đang thiếu sót nhiều chỗ, trong những bài viết tới mình sẽ cố gắng cải thiện để đem đến cho bạn đọc bài viết với nội dung đầy đủ và chất lượng nhất .>
+## Giới thiệu 
+Nhắc đến các ứng dụng  IOS nhiều người sẽ nghĩ đến độ mượt mà của nó. Là 1 IOS dev chuyên nghiệp ngoài việc tránh code leak memory làm thế nào để tối ưu hoá bộ nhớ của hệ thống  
+Concurrency((xử lý đồng thời) là một khái niệm xử lý nhiều thứ xảy ra cùng một lúc. Cùng với sự phát triển của chip xử lý đa lõi và sự thật là số lõi của mỗi bộ xử lý sẽ ngày càng tăng lên, các nhà phát triển phải tận dụng lợi thế của chúng. Mặc dù các hệ điều  hành có thể chạy nhiều tác vụ song song, nhưng hầu hết chúng là chương trình chạy ngầm, và  thực hiện các tác vụ yêu cầu ít thời gian liên tục, nên nếu một ứng dụng có rất nhiều tác vụ  việc quản lý tốt tài nguyên của hệ thống sẽ giúp hệ thống chạy mượt hơn đỡ giật lag hơn 
 
-## I Sự khác biệt của NSOperation 
+Việc sử dụng concurrency trong lập trình iOS là không hề khó, bởi vì Apple đã cung cấp cho lập trình viên các API để chúng ta dễ dàng thao tác sử dụng. Trong bài viết này, tôi xin giới thiệu về Grand Central Dispatch và NSOperation, 2 API thông dụng nhất giúp chúng ta quản lý concurrency một cách đơn giản và dễ dàng. tại sao lại sinh ra 2 thằng để làm gì  trong  bài viết hôm nay chúng ta cùng khám phá nhé 
 
-**GDC** viết tắt của Grand Central Dispatch là một api nó ở  mức độ thấp nhất  được dựa vào nền tảng của **C** tương tác trực tiếp với Unix  các que thực hiện theo cơ chế FIFO 
+## II Sự khác biệt của NSOperation 
 
-**NSOperation** là một class của **ObjectiveC** **GDC**
+**GDC** viết tắt của Grand Central Dispatch là một api nó ở  mức độ thấp nhất  được dựa vào nền tảng của **C** tương tác trực tiếp với Unix  các que thực hiện theo cơ chế FIFO [chi tiết GCD](https://techtalk.vn/concurrent-programming-with-gcd-in-swift-3-part-1.html)
+
+**NSOperation** là một class của **ObjectiveC** nó được xây dựng tầng bên trên của  **GDC**
 **NSOperation**  nó không giống như **GCD**nó không theo cơ chế theo thứ tự FIFO đây là một số điểm khác biệt 
-1. Không theo FIFO: trong operation queues, bạn có thể set độ ưu tiên thực hiện  cho operations, và bạn có thể thêm dependencies giữa các operations nó có nghĩa là bạn có thể xác định một số operations sẽ chỉ được thực hiện sau khi hoàn thành sau khi hoàn thành operations khác. Đấy là lý do mà nó không theo cơ chế FIFO 
+1. Không theo FIFO: trong operation queues, bạn có thể set độ ưu tiên thực hiện  cho operations, và bạn có thể thêm dependencies giữa các operations nó có nghĩa là bạn có thể xác định một số operations sẽ chỉ được thực hiện sau khi hoàn thành operations khác. Đấy là lý do mà nó không theo cơ chế FIFO 
 
-2. Mặc định chúng hoạt động concurrent , bạn có thể thay đổi nó kiểu serial queues, vẫn còn một cách giải quyết để thực hiện các tác vụ trong hàng đợi hoạt động theo trình tự bằng cách sử dụng các dependencies  giữa các hoạt động.
-3. Operation queue là kiểu hướng đối tượng, mỗi operation queue là một instance của lớp NSOperationQueue, và mỗi task là một instance của lớp NSOperation
+2. Operation queue chỉ xử lý theo kiểu concurrent queue mà không xử lý theo kiểu serial queue của GCD. Để xử lý theo kiểu serial queue, chúng ta tạo các ràng buộc cho các operation.
+
+3. Operation queue là kiểu hướng đối tượng, mỗi operation queue là một instance của lớp NSOperationQueue, và mỗi task là một instance của lớp NSOperation.
 *NSOperation cần được phân bổ trước khi chúng có thể được sử dụng và huỷ bỏ khi không cần dùng nữa. Mặc dù đây là một quá trình được tối ưu hoá cao, nhưng nó vẫn chậm GDC*
-## II Lợi ích của NSOperation 
-
+## III Lợi ích của NSOperation 
 Ngoài việc **NSOperation** được xây dựng  trên tầng  GCD, ngoài ra nó còn được  cung cấp những tính năng  mà  mà GDC  không có.  Có một vài lợi ích làm **NSOperation** là sự lựa chọn tuyệt vời hơn so với **GDC**
 ### Life cycle NSOperation 
 ![](https://i.imgur.com/llUvCp1.png)
@@ -75,8 +78,9 @@ queue.addOperations([operation1,operation2], waitUntilFinished: true)
 
 ```
 
-### Oserable 
-NSOperation and NSoperation que classes có rất nhiều giá trị để có thể observed sử dụng KVO (Key Value Observing) đây là một trong mà bạn muốn quan sát các trạng thái của một **operation** hoặc operation que 
+### Observable 
+NSOperation and NSoperation que classes   có  một số thuộc tính có thể observed sử dụng KVO (Key Value Observing)  Đây là một lợi ích quan trọng khác nếu bạn muốn theo dõi trạng thái của một hàng đợi hoạt động hoặc hoạt động
+
 
 ### Pause Cancel Resume 
 Một trong những điểm lợi hại của **NSOperation**  có thể tạm dừng, huỷ, tiếp tục 
@@ -99,37 +103,30 @@ Trong đó, VeryHigh có độ ưu tiên cao nhất và thấp nhất là VeryLo
 
 ### Control 
 **NSOperation** cũng có được nhiều lợi ích khác, ví dụ như bạn có thể thêm số queue mà bạn muốn hoạt động song song 
+``` swift 
 maxConcurrentOperationCount = 1
+```
 Là số operation que  có thể hoạt động song song. Nếu  không để số que cụ thể mà sử dụng  mặc định, thì nó sẽ theo tài nguyên mà hệ thống cho phép, lúc đó có thể thực hiện nhiều task cùng một lúc 
  
-
-
-
 ## Vậy nên dùng thằng nào 
 
-Theo như Apple khuyên thì chúng ta nên dùng thằng nào có mức độ cao nhất đó chính là **NSOperation** 
+Theo như Apple khuyên thì chúng ta nên dùng thằng nào có mức độ cao nhất đó chính là **NSOperation**  thay vì **GDC** trừ khi bạn cần làm gì đó mà **NSOperation** không hỗ trợ 
 Một operation có thể có dependencies vào một operartion khác nó là một tính năng hữu ích mà GCD không có nếu bạn cần thực thi một vài task theo một thứ tự cụ thể thì operation là một giải pháp tốt 
 
 GDC Thì thường dùng cho nhưng tác vụ đơn giản, điểm lợi thế của **GDC** được dựa trên ngôn ngữ **C** nên nhanh hơn so với **NSOperation** 	
 
 
-## Khi nào sử dụng **NSOperation**
-
-Dependency management  là một thứ tuyệt vời khi sử dụng **NSOperation**, Một operation này có thể phụ thuộc vào một operation khác đó là một tính năng hữu ích mà **GDC** không có,  nếu bạn cần thực hiện một vài task theo thứ tự cụ thể thì **NSOperation** là một giải pháp tốt 
-
-## Khi nào thì dùng **GDC**
-
-
-Dispatch Queues là cách dễ dàng để thực hiện các task bất đồng bộ, và đô
-
-
 ## Kết luận 
 
-Trong bài viết này chúng ta vừa khám phá điểm lợi và bất lợi của **GDC** và **NSOperation**  Api  rõ ràng rằng có thể kết hợp cả 2 công nghệ là sự lựa chọn trong hầu hết các dự án bài viết này không thiếu sót mong mọi người góp ý giúp mình 
+Trong bài viết này chúng ta vừa khám phá  sự khác biệt hai api là  **GDC** và **NSOperation**    rõ ràng rằng có thể kết hợp cả 2 công nghệ là sự lựa chọn trong hầu hết các dự án, và tuỳ theo mục đích sử dụng của bạn.  Bài viết này không thiếu sót mong mọi người góp ý giúp mình để lại bình luận phía giới bài việt hoặc mail trực tiếp cho mình [phamtrungkien@gmail.com]
 
 ## Tham khảo nguồn 
+[Apple](https://developer.apple.com/documentation/foundation/nsoperationqueue)
+
 [appcoda](https://www.appcoda.com/ios-concurrency/)
 
 [techtalk](https://techtalk.vn/concurrent-programming-with-gcd-in-swift-3-part-1.html)
 
-[](https://techblog.vn/concurrency-trong-ios-tim-hieu-ve-grand-central-dispatch-va-nsoperation)
+[Concurrency Programming Guide
+](https://developer.apple.com/library/archive/documentation/General/Conceptual/ConcurrencyProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008091)
+[WDC 2015](https://developer.apple.com/videos/play/wwdc2015/226/)
