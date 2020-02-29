@@ -3,9 +3,10 @@
 layout: post
 title: Chọn cái nào NSOpertion và GDC trong IOS 
 categories: ios developer
-thumbnail:https://www.iosdevlog.com/assets/images/wwdc/2015/226/1.png
 ---
-> Xin chào mọi nguời dạo gần đây mình nhận được góp ý của một anh leader team mobile  góp ý về bài viết của mình chia sẻ, cảm ơn anh rất nhiều, sau lần góp ý đó mình mới nhận ra được mình đang thiếu sót nhiều chỗ, trong những bài viết tới mình sẽ cố gắng cải thiện để đem đến cho bạn đọc bài viết với nội dung đầy đủ và chất lượng nhất .>
+> Xin chào mọi nguời dạo gần đây mình nhận được góp ý của một anh leader team mobile  góp ý về bài viết của mình chia sẻ, cảm ơn anh rất nhiều, sau lần góp ý đó mình mới nhận ra được mình đang thiếu sót nhiều chỗ, trong những bài viết tới mình sẽ cố gắng cải thiện để đem đến cho bạn đọc bài viết với nội dung đầy đủ và chất lượng nhất 
+
+
 ## Giới thiệu 
 Nhắc đến các ứng dụng  IOS nhiều người sẽ nghĩ đến độ mượt mà của nó. Là 1 IOS dev chuyên nghiệp ngoài việc tránh code leak memory làm thế nào để tối ưu hoá bộ nhớ của hệ thống  
 Concurrency((xử lý đồng thời) là một khái niệm xử lý nhiều thứ xảy ra cùng một lúc. Cùng với sự phát triển của chip xử lý đa lõi và sự thật là số lõi của mỗi bộ xử lý sẽ ngày càng tăng lên, các nhà phát triển phải tận dụng lợi thế của chúng. Mặc dù các hệ điều  hành có thể chạy nhiều tác vụ song song, nhưng hầu hết chúng là chương trình chạy ngầm, và  thực hiện các tác vụ yêu cầu ít thời gian liên tục, nên nếu một ứng dụng có rất nhiều tác vụ  việc quản lý tốt tài nguyên của hệ thống sẽ giúp hệ thống chạy mượt hơn đỡ giật lag hơn 
