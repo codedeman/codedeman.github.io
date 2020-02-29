@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Chọn cái nào NSOpertion và GDC trong IOS 
+title: Chọn cái nào NSOpertion và GCD trong IOS 
 categories: ios developer
 ---
 > Xin chào mọi nguời dạo gần đây mình nhận được góp ý của một anh leader team mobile  góp ý về bài viết của mình chia sẻ, cảm ơn anh rất nhiều, sau lần góp ý đó mình mới nhận ra được mình đang thiếu sót nhiều chỗ, trong những bài viết tới mình sẽ cố gắng cải thiện để đem đến cho bạn đọc bài viết với nội dung đầy đủ và chất lượng nhất 
@@ -14,18 +14,18 @@ Việc sử dụng concurrency trong lập trình iOS là không hề khó, bở
 
 ## II Sự khác biệt của NSOperation 
 
-**GDC** viết tắt của Grand Central Dispatch là một api nó ở  mức độ thấp nhất  được dựa vào nền tảng của **C** tương tác trực tiếp với Unix  các que thực hiện theo cơ chế FIFO [chi tiết GCD](https://techtalk.vn/concurrent-programming-with-gcd-in-swift-3-part-1.html)
+**GCD** viết tắt của Grand Central Dispatch là một api nó ở  mức độ thấp nhất  được dựa vào nền tảng của **C** tương tác trực tiếp với Unix  các que thực hiện theo cơ chế FIFO [chi tiết GCD](https://techtalk.vn/concurrent-programming-with-gcd-in-swift-3-part-1.html)
 
-**NSOperation** là một class của **ObjectiveC** nó được xây dựng tầng bên trên của  **GDC**
+**NSOperation** là một class của **ObjectiveC** nó được xây dựng tầng bên trên của  **GCD**
 **NSOperation**  nó không giống như **GCD**nó không theo cơ chế theo thứ tự FIFO đây là một số điểm khác biệt 
 1. Không theo FIFO: trong operation queues, bạn có thể set độ ưu tiên thực hiện  cho operations, và bạn có thể thêm dependencies giữa các operations nó có nghĩa là bạn có thể xác định một số operations sẽ chỉ được thực hiện sau khi hoàn thành operations khác. Đấy là lý do mà nó không theo cơ chế FIFO 
 
 2. Operation queue chỉ xử lý theo kiểu concurrent queue mà không xử lý theo kiểu serial queue của GCD. Để xử lý theo kiểu serial queue, chúng ta tạo các ràng buộc cho các operation.
 
 3. Operation queue là kiểu hướng đối tượng, mỗi operation queue là một instance của lớp NSOperationQueue, và mỗi task là một instance của lớp NSOperation.
-*NSOperation cần được phân bổ trước khi chúng có thể được sử dụng và huỷ bỏ khi không cần dùng nữa. Mặc dù đây là một quá trình được tối ưu hoá cao, nhưng nó vẫn chậm GDC*
+*NSOperation cần được phân bổ trước khi chúng có thể được sử dụng và huỷ bỏ khi không cần dùng nữa. Mặc dù đây là một quá trình được tối ưu hoá cao, nhưng nó vẫn chậm GCD*
 ## III Lợi ích của NSOperation 
-Ngoài việc **NSOperation** được xây dựng  trên tầng  GCD, ngoài ra nó còn được  cung cấp những tính năng  mà  mà GDC  không có.  Có một vài lợi ích làm **NSOperation** là sự lựa chọn tuyệt vời hơn so với **GDC**
+Ngoài việc **NSOperation** được xây dựng  trên tầng  GCD, ngoài ra nó còn được  cung cấp những tính năng  mà  mà GCD  không có.  Có một vài lợi ích làm **NSOperation** là sự lựa chọn tuyệt vời hơn so với **GCD**
 ### Life cycle NSOperation 
 ![](https://i.imgur.com/llUvCp1.png)
 vòng đời của của NSOperation gồm có các trạng thái sau pending-ready-executing-finish 
@@ -86,7 +86,7 @@ NSOperation and NSoperation que classes   có  một số thuộc tính có th�
 Một trong những điểm lợi hại của **NSOperation**  có thể tạm dừng, huỷ, tiếp tục 
 khi bạn sử dụng **GCD** bạn không kiểm soát sâu được   các task thực thi  **NSOperation** có thể kiểm soát được vòng đời của operation 
 ### Thay đổi độ ưu tiên 
-Cũng giống GDC  các concurrent queue với độ ưu tiên khác nhau, do đó chúng ta phải xác định độ ưu tiên của task trước rồi gán vào queue tương ứng. Đối với operation queue, chúng ta có thể thay đổi độ ưu tiên cho các task một cách dễ dàng sau khi gán task vào operation queue. Điều này là không thể đối với GCD.
+Cũng giống GCD  các concurrent queue với độ ưu tiên khác nhau, do đó chúng ta phải xác định độ ưu tiên của task trước rồi gán vào queue tương ứng. Đối với operation queue, chúng ta có thể thay đổi độ ưu tiên cho các task một cách dễ dàng sau khi gán task vào operation queue. Điều này là không thể đối với GCD.
 
 Độ ưu tiên của operation được định nghĩa qua enum:
 ``` swift 
@@ -110,15 +110,15 @@ Là số operation que  có thể hoạt động song song. Nếu  không để 
  
 ## Vậy nên dùng thằng nào 
 
-Theo như Apple khuyên thì chúng ta nên dùng thằng nào có mức độ cao nhất đó chính là **NSOperation**  thay vì **GDC** trừ khi bạn cần làm gì đó mà **NSOperation** không hỗ trợ 
+Theo như Apple khuyên thì chúng ta nên dùng thằng nào có mức độ cao nhất đó chính là **NSOperation**  thay vì **GCD** trừ khi bạn cần làm gì đó mà **NSOperation** không hỗ trợ 
 Một operation có thể có dependencies vào một operartion khác nó là một tính năng hữu ích mà GCD không có nếu bạn cần thực thi một vài task theo một thứ tự cụ thể thì operation là một giải pháp tốt 
 
-GDC Thì thường dùng cho nhưng tác vụ đơn giản, điểm lợi thế của **GDC** được dựa trên ngôn ngữ **C** nên nhanh hơn so với **NSOperation** 	
+GCD Thì thường dùng cho nhưng tác vụ đơn giản, điểm lợi thế của **GCD** được dựa trên ngôn ngữ **C** nên nhanh hơn so với **NSOperation** 	
 
 
 ## Kết luận 
 
-Trong bài viết này chúng ta vừa khám phá  sự khác biệt hai api là  **GDC** và **NSOperation**    rõ ràng rằng có thể kết hợp cả 2 công nghệ là sự lựa chọn trong hầu hết các dự án, và tuỳ theo mục đích sử dụng của bạn.  Bài viết này không thiếu sót mong mọi người góp ý giúp mình để lại bình luận phía giới bài việt hoặc mail trực tiếp cho mình phamtrungkiendev@gmail.com
+Trong bài viết này chúng ta vừa khám phá  sự khác biệt hai api là  **GCD** và **NSOperation**    rõ ràng rằng có thể kết hợp cả 2 công nghệ là sự lựa chọn trong hầu hết các dự án, và tuỳ theo mục đích sử dụng của bạn.  Bài viết này không thiếu sót mong mọi người góp ý giúp mình để lại bình luận phía giới bài việt hoặc mail trực tiếp cho mình phamtrungkiendev@gmail.com
 
 ## Tham khảo nguồn 
 [Apple](https://developer.apple.com/documentation/foundation/nsoperationqueue)
