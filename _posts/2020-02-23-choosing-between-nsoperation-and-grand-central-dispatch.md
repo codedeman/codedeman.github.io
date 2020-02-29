@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: Chọn cái nào NSOpertion và GDC trong IOS 
