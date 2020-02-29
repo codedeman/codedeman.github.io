@@ -15,19 +15,7 @@ layout: default
 
   {% include disqus.html %}
 </article>
-
-  <!-- START OF RELEVANT PART -->
-  <div
-    class="just-comments"
-    data-allowguests="true"
-    data-apikey="https://service.just-comments.com/prod/v2/comments?pageId=YOUR_PAGE_ID&apiKey=YOUR_API_KEY">
-  </div>
-  <!-- END OF RELEVANT PART -->
-
-  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
-
-</article>
 <!-- {% include  disqus.html %} -->
-<div class="fb-comments" data-href="https://codedeman.github.io" data-width="100" data-numposts="5"></div>
+<div class="fb-comments" data-href="{{ site.url }}{{ page.url }}" data-width="100" data-numposts="5"></div>
 
 
