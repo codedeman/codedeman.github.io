@@ -1,6 +1,6 @@
 ---
 # layout: post
-title:  Unit test  
+title:  Testing trong Xcode 
 categories:  interview
 ---
 Ứng dụng hoặc bất kì sản phẩm nào trước khi đến tay người dùng, đều phải trải qua 1 quá trình test cẩn thận. Khi nói về test nhiều người sẽ nghĩ người tester sẽ ngồi hàng giờ kiểm tra từng màn hình, từng nút bấm  để phát hiện ra điều bất thường và  báo lại cho nhà phát triển,thường một ứng dụng lớn thì đội tester sẽ mất rất nhiều thời gian để kiểm thử từng chức năng, thậm chí sau đó dev có thể  thay đổi code và sau đó tất cả các việc test của tester sẽ phải bắt đầu lại khá mất thời gian 
@@ -13,20 +13,15 @@ Tính từ giới kim tự tháp đầu tiên là Unit test, sau đó đến Int
 Unit test  là một trong những khái niệm căn bản nhẩt của automation test  chạy và xác thực mã nguồn, hiểu một cách đơn giản là  là function truyền vào tham số và kiểm tra kết quả mong đợi đầu ra, nó đơn giản mà nhanh 
 
 ## Integration test 
-Tương tự như Unit test nhưng nó sẽ có thể cover rộng hơn so với unittest 
-Mục tiêu của interaction là cài thiện chất lượng của phần mềm 
-
+Tương tự như Unit test sử dụng chung một api, trong khi unit test  bao gồm 1 phần logic nhỏ của app, một interaction test thường kiểm tra hành vi của hệ thống con, hoặc kết hợp của các lớp chức năng 
 ## UI test 
 là bước cuối cùng của automation test là testing chạy lậu nhất so với hai thằng còn lại, nó có khả năng gi lại những tương tác của user lên giao diện và chuyển nó thành mã nguồn 
 
-Trong bài viết này mình muốn chia sẻ một chút hiểu biết của mình  về unit test 
+Trong phạm vi bài viết này, mình muốn chia sẻ một chút hiểu biết của mình  về unit test 
 
 ## Lợi ích của Unit test 
-Unittest hữu ích khi làm việc với codebase lớn, khi  dự án phải làm việc với nhiều dev khác tiết kiệm thời gian thay đổi chỉnh sửa chức năng mà không sợ ảnh hưởng  đến code của ông khác  hạn chế bug phát sinh, mình đã từng đau khổ khi maintain các dự án cũ nhưng không có unittest kết quả là sửa tính năng này, thì lại hỏng tính năng kia vì các tính năng đều liên quan đến nhau nên code có unittest thì sẽ gíup bạn gỉai quyết vấn đề này 
-
-
-## XCtesting 
-Là một công cụ có khác năng viết test nhiều mức độ trừu tượng, là một giải pháp tốt để testing  kết hợp được nhiều kiểu test để tối đa hoá lơi ích từ mỗi loại 
+Unittest hữu ích khi làm việc với codebase lớn, khi  dự án phải làm việc với nhiều dev khác tiết kiệm thời gian thay đổi chỉnh sửa chức năng mà không sợ ảnh hưởng  đến code của ông khác, hạn chế bug phát sinh. Mình đã từng đau khổ khi maintain các dự án cũ nhưng không có unittest kết quả là sửa tính năng này, thì lại hỏng tính năng kia vì các tính năng đều liên quan đến nhau nên code có unittest thì sẽ gíup bạn gỉai quyết vấn đề này 
+Hơn nữa việc kết hợp unitest sẽ làm chất lượng của ứng dụng làm ra tốt hơn  chúng ta có thể kiếm được nhiều tiền hơn 
 
 Một unit test sẽ test 1 case cụ thể, và trong một phương thức thường sẽ có 4 bước 
 1 Setup 
@@ -41,11 +36,13 @@ Khởi tạo classs mà bạn muốn test
 </br>
     Kiểm kết quả mong đợi của kết quả trả về 
 4 Clean up 
-## Setup và Teardown
+
+
+## XCtesting 
+Là một công cụ có khác năng viết test nhiều mức độ trừu tượng, là một giải pháp tốt để testing  kết hợp được nhiều kiểu test để tối đa hoá lơi ích từ mỗi loại  trong XCTesting cung cấp cho chúng ta hai phương thức Setup và Teardown
 **Setup** là phương thức khởi tạo các phương thức test
 </br>
 **TearDown** là phương thức clean sau mỗi phương thức hoàn thành  thực thi theo cơ chế LIFO 
-
 
 Chúng ta có test case  đơn giản như sau
 Case 1  nhập vào một số chia hết cho 2 
@@ -66,13 +63,30 @@ Execution:chạy function
 Expection: trả về False
 </br>
 
-
 Bây giờ chúng ta sẽ chuyển đoạn mã giả trên thành code nào, đầu tiên khi tạo project chúng ta sẽ tích vào Unittest nhé 
-
 <br>
 <img src="https://i.imgur.com/wjiS1II.png"  width=80% />
 <br>
 
+
+Trong hàm *ViewController* chúng ta sẽ có 1 hàm như sau 
+``` swift
+func isNumberDivisible(number:Int) ->Bool {
+    if (number%2 == 0){
+      return true
+    } else {
+    
+      return false
+    
+    }
+  }
+  
+}
+```
+Bước   tiếp theo chúng ta sẽ viết test case để kiểm tra function trên kết quả mong đợi của function trên. Chúng ta nên tạo folder như này để giúp chúng ta dễ quản lý hơn, trong thư mục case chúng ta sẽ tạo từng thư mục theo các case mà chúng ta cần test 
+<br>
+<img src="https://i.imgur.com/J7qVVGz.png"  width=80% />
+<br>
 
 ``` Swift
   func sumArray(nums:[Int]) ->Int {
@@ -94,7 +108,7 @@ Bây giờ chúng ta sẽ chuyển đoạn mã giả trên thành code nào, đ�
   }
 ```
 ## Kết luận
-Bài viết này mình đã giới thiệu cho các bạn những khái niệm căn bản nhất của testing, và chúng ta cũng ta cũng đã thử viết 1 unit test căn bản, hy vọng bài viết của mình sẽ hữu ích cho bạn khi mới tiếp cận đến unit test, trong bài viết sắp tới mình sẽ chia sẻ cho các bạn về UI test, mọi ý kiến đóng góp mong các bạn gửi về địa chỉ ![]phamtrungkiendev@gmail.com or bình luận phía giới của bài viết này nhé!
+Bài viết này mình đã giới thiệu cho các bạn những khái niệm căn bản nhất của testing, và chúng ta cũng ta cũng đã thử viết 1 unit test căn bản, hy vọng bài viết của mình sẽ hữu ích cho bạn khi mới tiếp cận đến unit test, trong bài viết sắp tới mình sẽ chia sẻ cho các bạn về UI test, mọi ý kiến đóng góp mong các bạn gửi về địa chỉ ![]phamtrungkiendev@gmail.com hoặc bình luận phía giới của bài viết này nhé!
 
 Bài viết tham khảo của 
 
