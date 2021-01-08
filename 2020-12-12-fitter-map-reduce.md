@@ -54,6 +54,8 @@ taxes result [200.0, 20404.0]
 
 ```
 
+Time complexity: O(n) 
+
 ## Fitter 
 
 Sử dụng phép xử lý filter duyệt qua tất cả các phần tử có trong collection và chỉ lấy ra các phần tử thoả mãn điều kiện cho trước và bổ sung vào mảng kết quả. 
@@ -68,10 +70,57 @@ let myIphone = iDevices.filter({return $0.type == "Iphone"})
 print(myIphone)
 
 ```
+Time complexity: O(n) 
 
 ## Reduce 
 
 Phép xử lý reduce được sử dụng để kết hợp tất cả các phần tử trong một collection thành một kết quả đầu ra
+
+``` swift 
+let totalVietnamese = myIphone.reduce(0,{ x, y  in
+    x + y.price
+})
+
+print(totalVietnamese)
+
+```
+
+Time complexity: O(n) 
+
+## Sorted 
+
+``` swift 
+
+let sortedDescending = iDevices.sorted { (a, b) -> Bool in
+    a.price > a.price
+}
+
+print("Sorted descending \(sortedDescending)")
+
+
+```
+
+## FlatMap 
+
+Biến một mảng chứa nhiều phần tử mảng, có cùng một kiểu dữ liệu, thành một mảng 
+
+Ví dụ chúng ta có 1 mảng gồm 2 phần tử là 2 mảng, chúng ta muốn kết hợp 2 mảng này lại thành 1 mảng
+
+``` swift 
+
+let number = [[1,2,3,4],[4,5,6,7]]
+
+let flatNumbers = number.flatMap  ({$0.sorted()})
+    
+print(" \(flatNumbers)")
+ 
+
+```
+
+## compactMap 
+
+Trả về một mảng chứa non-nil được gọi khi chuyển đổi mỗi thành phần trong chuỗi 
+
 
 
 
