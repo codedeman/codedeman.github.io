@@ -122,7 +122,14 @@ print(" \(flatNumbers)")
 Trả về một mảng chứa non-nil được gọi khi chuyển đổi mỗi thành phần trong chuỗi 
 
 
+``` swift 
 
+let possibleNumbers = ["1", "2", "three", "///4///", "5"]
+let compactMapped: [Int] = possibleNumbers.compactMap { str in Int(str) }
+
+print(compactMapped)
+
+```
 
 
 
